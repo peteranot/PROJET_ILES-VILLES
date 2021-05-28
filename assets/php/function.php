@@ -2,8 +2,17 @@
 include('class/classIles.php');
 include('class/classVilles.php');
 
+//$iles -> accès au fonctions de la class iles()
 $iles = new iles();
+//$iles -> accès au fonctions de la class villes()
 $villes = new villes();
+
+
+// j'affiche ma liste
+$resIles = $iles->getIles();
+$resIleVille = $iles->getIlesVilles();
+$resVilles = $villes->getVilles();
+
 
 // =========================
 // gestion des boutons des Formulaires des Iles
@@ -138,16 +147,6 @@ if (isset($_POST['btnVilleParIle'])) {
 	//je change l'état 
     $etatIle = "fermer";
 }
-
-
-// j'affiche ma liste
-$resIles = $iles->getIles();
-$resIleVille = $iles->getIlesVilles();
-$resVilles = $villes->getVilles();
-
-
-
-
 
 ?>
 

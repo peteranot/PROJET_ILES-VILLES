@@ -3,15 +3,11 @@ include __DIR__."./../connexion.php";
 
 class villes {
     
-/** ============================ **\
+/** ============================ **/
 	// RECUPERER TOUT LES Villes \\
 /** ============================ **/
 
-    /**
-     * Description of function 
-     *
-     * @return $resVilles
-     */
+    //fonction getVille() qui recupére tout les villes
     public function getVilles(){
         global $conn; 
 
@@ -22,11 +18,12 @@ class villes {
 
     }
 
-/** ============================ **\
+/** ============================ **/
 	// FIN RECUPERER TOUT LES Villes \\
 /** ============================ **/	
 	
-public function getVillesParIle($id){
+    //fonction getVillesParIle($id) recupere la ville de l'ile
+    public function getVillesParIle($id){
         global $conn; 
 
         $req = "SELECT * from villes WHERE fk_ile=".$id; //$sql : contient la requete sql 
@@ -36,15 +33,10 @@ public function getVillesParIle($id){
 	}
 
 
-/** ============================ **\
+/** ============================ **/
 	// CREER / INSERTION  \\
 /** ============================ **/
-    /**
-     * requete INSERT INTO "villes"
-     *
-     * @param string $name
-     *
-     */
+    //fonction createVille($name) permet de créer une ville
     public function createVille($name){
 
         global $conn;
@@ -53,23 +45,18 @@ public function getVillesParIle($id){
 
     }
 	
-/** ============================ **\
+/** ============================ **/
 	// FIN CREER / INSERTION  \\
 /** ============================ **/
 	
 	
 	
 	
-/** ============================ **\
+/** ============================ **/
 	// SUPPRESSION \\
 /** ============================ **/
 
-    /**
-     * requete DELETE from "villes"
-     *
-     * @param int $id 
-     *
-     */
+    //fonction deleteVille($id) qui supprime la ville concerné
     public function  deleteVille($id){
         
         global $conn; 
@@ -81,21 +68,16 @@ public function getVillesParIle($id){
 
     }
  
-/** ============================ **\
+/** ============================ **/
 	// FIN SUPPRESSION \\
 /** ============================ **/
 
 
-/** ============================ **\
+/** ============================ **/
 	// MISE A JOUR  \\
 /** ============================ **/
     
-    /**
-     * requete UPDATE from "villes"
-     *
-     * @param string $new_name 
-     *
-     */
+    //fonction updateVille($new_name,$id) qui met à jour la ville concerné
     public function updateVille($new_name,$id){
         global $conn;
 
@@ -104,9 +86,9 @@ public function getVillesParIle($id){
 
     }
 	
-	/** ============================ **\
-	// FIN MISE A JOUR  \\
-	/** ============================ **/
+/** ============================ **/
+// FIN MISE A JOUR  \\
+/** ============================ **/
 	
 }	
  

@@ -3,15 +3,10 @@ include __DIR__."./../connexion.php";
 
 class iles {
     
-/** ============================ **\
-	// RECUPERER TOUT LES LANGUES \\
 /** ============================ **/
-
-    /**
-     * Description of function 
-     *
-     * @return $res_listLivres
-     */
+	// RECUPERER TOUT LES ILES et VILLE par ILES\\
+/** ============================ **/
+    //fonction getIles() qui récupere tout les iles
     public function getIles(){
         global $conn; 
 
@@ -22,35 +17,29 @@ class iles {
 
     }
 	
+    //fonction getIlesVilles() qui récupére les villes de l'ile 
 	public function getIlesVilles(){
         global $conn; 
-
+        //$sql : contient la requete sql 
         $req = "SELECT  I.name, V.name
 				FROM `ile_ville` IV, `villes` V, `iles` I
-				WHERE I.id=IV.fk_ile AND V.id=IV.fk_ville" ; //$sql : contient la requete sql 
+				WHERE I.id=IV.fk_ile AND V.id=IV.fk_ville" ; 
         $resIleVille = $conn->query($req); //$result : execute la requete $sql
-
         return $resIleVille;
-
     }
 
-/** ============================ **\
-	// FIN RECUPERER TOUT LES LANGUES \\
+/** ============================ **/
+	// FIN \\
 /** ============================ **/	
 	
 	
 	
 
-/** ============================ **\
+/** ============================ **/
 	// CREER / INSERTION  \\
 /** ============================ **/
-    /**
-     * create hello into "langue"
-     *
-     * @param string $name
-     * @param string $translate
-     *
-     */
+
+    //fonction createIle($name) qui créer une île
     public function createIle($name){
 
         global $conn;
@@ -59,51 +48,38 @@ class iles {
 
     }
 	
-/** ============================ **\
+/** ============================ **/
 	// FIN CREER / INSERTION  \\
 /** ============================ **/
 	
 	
 	
 	
-/** ============================ **\
+/** ============================ **/
 	// SUPPRESSION \\
 /** ============================ **/
 
-    /**
-     * Delete lang selected from "langue"
-     *
-     * @param int $id 
-     *
-     */
+    //fonction deleteIle($idIle) qui supprime l'ile (id=$idIle)
     public function  deleteIle($idIle){
         
         global $conn; 
-        //sql to delete a record
+        //requete SQL qui supprime l'ile par rapport à l'id
         $req_delete = "DELETE FROM iles WHERE id=".$idIle;
 
         // execute la requête précédente
         $conn->query($req_delete);
-
     }
  
-/** ============================ **\
+/** ============================ **/
 	// FIN SUPPRESSION \\
 /** ============================ **/
 
 
-/** ============================ **\
+/** ============================ **/
 	// MISE A JOUR  \\
 /** ============================ **/
     
-    /**
-     * Update DbShoop "livres"
-     *
-     * @param string $new_name 
-     * @param string $new_translate 
-     * @param int $id_langue
-     *
-     */
+    //fonction updateIle($new_name,$idIle) qui met a jour l'ile
     public function updateIle($new_name,$idIle){
         global $conn;
 
@@ -112,24 +88,17 @@ class iles {
 
     }
 	
-	/** ============================ **\
-	// FIN MISE A JOUR  \\
-	/** ============================ **/
+/** ============================ **/
+// FIN MISE A JOUR  \\
+/** ============================ **/
 	
 
 
-/** ============================ **\
+/** ============================ **/
 	// RECUPERER LES VILLES D'UNE ILE  \\
 /** ============================ **/
     
-    /**
-     * Update DbShoop "livres"
-     *
-     * @param string $new_name 
-     * @param string $new_translate 
-     * @param int $id_langue
-     *
-     */	
+    //fonction getCityByIsland($getVilles) qui recupere les villes d'une ile  ---> AJAX
 	public function getCityByIsland($getVilles){
         global $conn;
 
@@ -143,21 +112,15 @@ class iles {
         return json_encode($island);
     }
 	
-/** ============================ **\
+/** ============================ **/
 	// FIN RECUPERER LES VILLES D'UNE ILE  \\
 /** ============================ **/
 
 
-/** ============================ **\
+/** ============================ **/
 	// CREER / INSERTION  \\
 /** ============================ **/
-    /**
-     * create hello into "langue"
-     *
-     * @param string $name
-     * @param string $translate
-     *
-     */
+    //fonction createVilleParIle($nameVille, $nameIle) qui assigne une ville a une ile
     public function createVilleParIle($nameVille, $nameIle){
 
         global $conn;
@@ -166,7 +129,7 @@ class iles {
 
     }
 	
-/** ============================ **\
+/** ============================ **/
 	// FIN CREER / INSERTION  \\
 /** ============================ **/
 

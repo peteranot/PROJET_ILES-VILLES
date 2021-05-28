@@ -1,35 +1,22 @@
 <html>
 	<head>
 		<!-- TITRE -->
-        <title>Nos Îles</title>
+        <title>Nos Îles & Villes</title>
 
         <!-- JVSCRIPT -->
         <script src="assets/js/jquery.js"></script>
 		<script language="javascript">
-
             $(document).ready(function(){
-
-
                 //1ere évènement (ILES)
                 $("#select_listIles").on("change", function(){
                     jsIles = $("#select_listIles").val();
                     getIles(jsIles);
                 })
-
-
-                //2em évènement (VILLES)
-                // $("#select_listVilles").on("change", function(){
-                //     jsVilles = $("#select_listVilles").val();
-                //     getVilles(jsVilles);
-                // })
-
-
             })
 
 
-            //ILES
+            //fonction AJAX qui va afficher les villes de l'ile concerné
             function getIles(jsIles){
-
                 $.ajax({
                     type: 'post',
                     url: 'assets/php/ajax.php',
@@ -48,36 +35,12 @@
 
                         })
                     }
-
-
                 });
             }
-
-
-            //VILLES
-            // function getVilles(jsVilles){
-
-            //     $.ajax({
-            //         type: 'post',
-            //         url: 'ajax.php',
-            //         data: {
-            //             'getVilles': jsVilles
-            //         },
-            //         datatype: 'json',
-            //         success: function(){
-            //             alert('success');
-            //         },
-
-
-            //     });
-            // }
-
-
         </script>
 	</head>
 	
 	<body>
-		<a href="index_admin.php">Pannel Admin</a>
 		<p>Selectionné une îles: </p>
 		<?php
 
@@ -86,20 +49,17 @@
 			$req_listIles = "SELECT * from iles" ; //$sql : contient la requete sql 
 			$res_listIles = $conn->query($req_listIles); //$result : execute la requete $sql
 
-				//ILES
+				//Liste déroulante contenant tout les iles
 				echo '<select id="select_listIles">';
-
 					foreach ($res_listIles as $value) {
-						
 						echo '<option value="'.$value["name"].'">';
 							echo $value["name"];    
 						echo '</option>';
-
 					}
-
 				echo '</select>';
 				
 				
+                //bloc d'affichage des villes de l'ile concerné
 				echo '<div id="affiche">';
 					
 				echo '</div>';
