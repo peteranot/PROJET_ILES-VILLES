@@ -1,18 +1,18 @@
 
 	
 <?php
-	//nom du serveur
+	//server name
 	$host = "localhost";
-	//utilisateur admin
+	//user admin
 	$username = "root";
-	//mot de passe
+	//user password
 	$password = "";
-	//nom de la base de données
+	//database name
 	$dbname = "rsma_iles";
-	// Creer la connexion
+	// Create connexion
 	$conn = new mysqli($host, $username, $password, $dbname);
 
-	// Verifier la connexion 
+	// verify connexion
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}else{

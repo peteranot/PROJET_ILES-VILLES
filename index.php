@@ -7,7 +7,7 @@
         <script src="assets/js/jquery.js"></script>
 		<script language="javascript">
             $(document).ready(function(){
-                //1ere évènement (ILES)
+                //get values Iles into select
                 $("#select_listIles").on("change", function(){
                     jsIles = $("#select_listIles").val();
                     getIles(jsIles);
@@ -15,23 +15,22 @@
             })
 
 
-            //fonction AJAX qui va afficher les villes de l'ile concerné
+            //function ajax : get Ville by Iles
             function getIles(jsIles){
                 $.ajax({
-					//methode POST
+					//method POST
                     type: 'post',
-					//fichier contenant la fonction php ajax
                     url: 'assets/php/ajax.php',
                     data: {
                         'getIles': jsIles
                     },
-					//format de données
+					//json format data
                     datatype: 'json',
                     success: function(data) {
                         data = JSON.parse(data);
-						//vider l'element #affiche
+						//clear #affiche
                         $('#affiche').empty(); 
-						//Afficher dans #affiche
+						//display #affiche
                         $('#affiche').append 
 						('<p><b><u>Les villes: </b></u></p><select id="show_ville"></select>');
                         $.each(data.data,function(idx,el){
@@ -51,12 +50,12 @@
 
 			require('assets/php/connexion.php');
 			
-			//$req_listIles : contient la requete sql  qui recupere tout les iles
+			//get all iles
 			$req_listIles = "SELECT * from iles" ; 
-			//$res_listIles : execute la requete $sql
+			//$res_listIles : execute sql requete
 			$res_listIles = $conn->query($req_listIles); 
 
-				//Liste déroulante contenant tout les iles
+				//display iles into select
 				echo '<select id="select_listIles">';
 					foreach ($res_listIles as $value) {
 						echo '<option value="'.$value["name"].'">';
@@ -66,7 +65,7 @@
 				echo '</select>';
 				
 				
-                //bloc d'affichage des villes de l'ile concerné
+                //display data 
 				echo '<div id="affiche">';
 					
 				echo '</div>';

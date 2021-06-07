@@ -1,13 +1,13 @@
 <?php
-	//inclure la classe classIles.php
+
 	include 'class/classIles.php';
 
 	$iles_obj = new iles();
 
-	//recupére l'ile 
+	//get ile
 	$getIles = $_POST['getIles'];
 
-	//récupere les villes de l'ile concerné
+	//get villes by ile
 	$res_getcity = $iles_obj->getCityByIsland($getIles);
 
 

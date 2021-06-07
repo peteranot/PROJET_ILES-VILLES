@@ -47,13 +47,11 @@
 		</div>
 		
 		
-		<!-- FORMULAIRE D'AJOUT D'UNE LANGUE -->
-		
 		
 		<div class="row" align="center">
 			<div class="col-md-12 divAddLangue">
                 <?php
-				// <!-- AJOUTER UNE LANGUE  -->
+				// <!-- FORM ADD NEW LANGUE -->
 					echo '<form  method="POST">';
 						echo '<br/>';
 						echo '<p>';
@@ -71,8 +69,7 @@
                 ?>
             </div>
 		</div>
-		
-		<!-- FIN FORMULAIRE D'AJOUT D'UNE LANGUE -->
+
 		
 		<br/><br/>
 		
@@ -84,16 +81,11 @@
 			</div>
 		</div>
 		
-		<!-- TABLEAU DE LISTES DES LANGUES ET LA TRADUCTION -->
-		
         <div class="row"  align="center">
             <div class="col-md-12 divListeLangue">
+				<!-- Display list langue-->
                 <?php
-					// CONDITIONS \\
-					// Afficher la liste des langues
-					//si $res_lang contient au moins une données 
 					if ($res_lang->num_rows > 0) {
-						//faire ceci
 						echo "<table>";
 							echo "<th>";
 								echo "Name";
@@ -108,16 +100,12 @@
 							echo "</th>";
 							echo "<th>";
 							echo "</th>";
-						//Boucle : Pour chaque resultat 
 						foreach ($res_lang as $valeur) { 
 
 							if (($etat == "ouvrir") && ($id_clique == $valeur['id'])) {
 								echo '<form method="post">';
-									
-									echo "<input type='hidden' name='id_langue' value=" . $valeur['id'] . ">";
-										
+										echo "<input type='hidden' name='id_langue' value=" . $valeur['id'] . ">";
 										echo "<tr>";
-
 											echo "<td>";
 												echo "<input type='text' name='new_name'  value='" . $valeur['name'] . "'>";
 											echo "</td>";
@@ -129,16 +117,13 @@
 											echo "<td>";
 												echo "<input type='submit' name='btn' value='Confirmer'/>";
 											echo "</td>";
-
 										echo "<tr>";
-										
 								echo '</form>';
 
-							} else {
+							} 
+							else {
 								echo '<form method="post">';
-								
 									echo "<tr>";
-
 										echo "<td>";
 											echo $valeur['name'];
 										echo "</td>";
@@ -156,21 +141,17 @@
 												echo "<input type='hidden' name='id_langue' value=" . $valeur['id'] . ">";
 												echo "<input type='submit' name='btn' value='Supprimer'/>";
 										echo "</td>";
-
 									echo "</tr>";
-									
 								echo '</form>';	
 							}
 						}
 						echo "</table>";
-					//sinon
-					} else { 
-						//faire cela
+					} 
+					else { 
 						echo "Il n'y a aucun résultats";
 					}
                 ?>
             </div>
-		</div>
-		         
+		</div>         
     </body>
 </html>
