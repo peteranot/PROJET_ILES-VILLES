@@ -108,8 +108,8 @@
 							echo "</th>";
 							echo "<th>";
 							echo "</th>";
-
-						foreach ($res_lang as $valeur) { //Boucle : Pour chaque resultat 
+						//Boucle : Pour chaque resultat 
+						foreach ($res_lang as $valeur) { 
 
 							if (($etat == "ouvrir") && ($id_clique == $valeur['id'])) {
 								echo '<form method="post">';
@@ -163,8 +163,8 @@
 							}
 						}
 						echo "</table>";
-						
-					} else { //sinon
+					//sinon
+					} else { 
 						//faire cela
 						echo "Il n'y a aucun résultats";
 					}

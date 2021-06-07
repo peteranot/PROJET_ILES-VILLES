@@ -10,9 +10,10 @@ class villes {
     //fonction getVille() qui recupére tout les villes
     public function getVilles(){
         global $conn; 
-
-        $req = "SELECT * from villes" ; //$sql : contient la requete sql 
-        $resVilles = $conn->query($req); //$result : execute la requete $sql
+		//$req : contient la requete sql 
+        $req = "SELECT * from villes" ; 
+		//$resVilles : execute la requete $sql
+        $resVilles = $conn->query($req); 
 
         return $resVilles;
 
@@ -25,9 +26,10 @@ class villes {
     //fonction getVillesParIle($id) recupere la ville de l'ile
     public function getVillesParIle($id){
         global $conn; 
-
-        $req = "SELECT * from villes WHERE fk_ile=".$id; //$sql : contient la requete sql 
-        $resVillesParIle = $conn->query($req); //$result : execute la requete $sql
+		//$req : contient la requete sql 
+        $req = "SELECT * from villes WHERE fk_ile=".$id; 
+		//$resVillesParIle : execute la requete $sql
+        $resVillesParIle = $conn->query($req); 
 
         return $resVillesParIle;
 	}
@@ -40,6 +42,7 @@ class villes {
     public function createVille($name){
 
         global $conn;
+		//$sql : contient la requete sql 
         $sql = "INSERT INTO `villes`(`name`) VALUES ('$name')";
         $conn->query($sql);
 
@@ -60,10 +63,10 @@ class villes {
     public function  deleteVille($id){
         
         global $conn; 
-        //sql to delete a record
+        //req_delete : contient la requete sql 
         $req_delete = "DELETE FROM villes WHERE id=".$id;
 
-        // execute la requête précédente
+        // execute la requête sql
         $conn->query($req_delete);
 
     }
@@ -80,7 +83,7 @@ class villes {
     //fonction updateVille($new_name,$id) qui met à jour la ville concerné
     public function updateVille($new_name,$id){
         global $conn;
-
+		//req_update : contient la requete sql 
         $req_update = "UPDATE `villes` SET `name`= '$new_name' WHERE id =".$id;
         $conn->query($req_update);
 

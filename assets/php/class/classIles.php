@@ -6,12 +6,14 @@ class iles {
 /** ============================ **/
 	// RECUPERER TOUT LES ILES et VILLE par ILES\\
 /** ============================ **/
+
     //fonction getIles() qui récupere tout les iles
     public function getIles(){
         global $conn; 
-
-        $req = "SELECT * from iles" ; //$sql : contient la requete sql 
-        $resIles = $conn->query($req); //$result : execute la requete $sql
+		//$req : contient la requete sql 
+        $req = "SELECT * from iles" ; 
+		//$resIles : execute la requete $sql
+        $resIles = $conn->query($req); 
 
         return $resIles;
 
@@ -20,11 +22,12 @@ class iles {
     //fonction getIlesVilles() qui récupére les villes de l'ile 
 	public function getIlesVilles(){
         global $conn; 
-        //$sql : contient la requete sql 
+        //$req : contient la requete sql 
         $req = "SELECT  I.name, V.name
 				FROM `ile_ville` IV, `villes` V, `iles` I
 				WHERE I.id=IV.fk_ile AND V.id=IV.fk_ville" ; 
-        $resIleVille = $conn->query($req); //$result : execute la requete $sql
+		//$resIleVille : execute la requete $sql
+        $resIleVille = $conn->query($req); 
         return $resIleVille;
     }
 
@@ -43,6 +46,7 @@ class iles {
     public function createIle($name){
 
         global $conn;
+		//$sql : requete SQL qui supprime l'ile par rapport à l'id
         $sql = "INSERT INTO `iles`(`name`) VALUES ('$name')";
         $conn->query($sql);
 
@@ -63,7 +67,7 @@ class iles {
     public function  deleteIle($idIle){
         
         global $conn; 
-        //requete SQL qui supprime l'ile par rapport à l'id
+        //$req_delete : contient la requête sql
         $req_delete = "DELETE FROM iles WHERE id=".$idIle;
 
         // execute la requête précédente
@@ -82,7 +86,7 @@ class iles {
     //fonction updateIle($new_name,$idIle) qui met a jour l'ile
     public function updateIle($new_name,$idIle){
         global $conn;
-
+		//$req_update : contient la requete sql
         $req_update = "UPDATE `iles` SET `name`= '$new_name'  WHERE id =".$idIle;
         $conn->query($req_update);
 
@@ -101,7 +105,7 @@ class iles {
     //fonction getCityByIsland($getVilles) qui recupere les villes d'une ile  ---> AJAX
 	public function getCityByIsland($getVilles){
         global $conn;
-
+		//$req_select : contient la requete sql
         $req_select = "SELECT v.name FROM `ile_ville` as iv join iles as i on iv.fk_ile = i.id join villes as v on iv.fk_ville = v.id WHERE i.name = '".$getVilles."'";
         $res_select = $conn->query($req_select);
         // var_dump($res_select);
@@ -120,10 +124,12 @@ class iles {
 /** ============================ **/
 	// CREER / INSERTION  \\
 /** ============================ **/
+
     //fonction createVilleParIle($nameVille, $nameIle) qui assigne une ville a une ile
     public function createVilleParIle($nameVille, $nameIle){
 
         global $conn;
+		//$sql : contient la requete sql
         $sql = "INSERT INTO `ile_ville`(`fk_ile`,`fk_ville`) VALUES ('$nameVille','$nameIle')";
         $conn->query($sql);
 
